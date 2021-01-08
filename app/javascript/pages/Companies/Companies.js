@@ -33,7 +33,7 @@ export default function Companies() {
     const [role, setRole] = useState('')
     const [countUserFilters, setCountUserFilters] = useState({})
     const [countCompanyFilters, setCountCompanyFilters] = useState({})
-    const [order, setSortingOrder] = useState('desc')
+    const [order, setSortingOrder] = useState('asc')
     const [filterFn, setFilterFn] = useState({ fn: items => { return items } })
     const data = [{label: 'Companies', data: countCompanyFilters}, {label: 'Users', data: countUserFilters}]
     
@@ -45,7 +45,7 @@ export default function Companies() {
     
 
     //Fetch companies based on company role and user role with user's count
-    const getCompanies = async (role = '', order = 'desc') => {
+    const getCompanies = async (role = '', order = 'asc') => {
         const url = `/companies?role=${role}&order=${order}`;
         await fetch(url, { method: 'GET'})
           .then(response => {
@@ -60,7 +60,7 @@ export default function Companies() {
 
     // Fetch count of companies based on comapany and user role
     const getCompanyFilterByRole = async () => {
-        const url1 = `/companiess_count_by_roles`;
+        const url1 = `/companies/filter_by_roles_count`;
         await fetch(url1, { method: 'GET'})
           .then(response => {
             if (response.ok) {
@@ -73,7 +73,7 @@ export default function Companies() {
     }
 
     const getUserFilterByRole = async () => {
-        const url1 = `/users_count_by_roles`;
+        const url1 = `users/filter_by_roles_count`;
         await fetch(url1, { method: 'GET'})
           .then(response => {
             if (response.ok) {
