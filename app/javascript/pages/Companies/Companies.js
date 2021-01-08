@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PageHeader from "../../components/PageHeader";
-import CountGrid from "./CountGrid";
+import FilterGrid from "./FilterGrid";
 import PeopleOutlineTwoToneIcon from '@material-ui/icons/PeopleOutlineTwoTone';
 import { Paper, makeStyles, TableBody, TableRow, TableCell, Toolbar, InputAdornment } from '@material-ui/core';
 import useTable from "../../components/useTable";
@@ -33,7 +33,7 @@ export default function Companies() {
     const [role, setRole] = useState('')
     const [countUserFilters, setCountUserFilters] = useState({})
     const [countCompanyFilters, setCountCompanyFilters] = useState({})
-    const [order, setSortingOrder] = useState('desc')
+    const [sortOrder, setSortingOrder] = useState('desc')
     const [filterFn, setFilterFn] = useState({ fn: items => { return items } })
     const data = [{label: 'Companies', data: countCompanyFilters}, {label: 'Users', data: countUserFilters}]
     
@@ -45,8 +45,8 @@ export default function Companies() {
     
 
     //Fetch companies based on company role and user role with user's count
-    const getCompanies = async (role = '', order = 'desc') => {
-        const url = `/companies?role=${role}&order=${order}`;
+    const getCompanies = async (role = '', sortOrder = 'desc') => {
+        const url = `/companies?role=${role}&sort=${sortOrder}`;
         await fetch(url, { method: 'GET'})
           .then(response => {
             if (response.ok) {
@@ -58,7 +58,7 @@ export default function Companies() {
           .catch(() => this.props.history.push("/"))
     }
 
-    // Fetch count of companies based on comapany and user role
+    // Fetch companies count based on role filter
     const getCompanyFilterByRole = async () => {
         const url1 = `/companies/filter_by_roles_count`;
         await fetch(url1, { method: 'GET'})
@@ -72,6 +72,7 @@ export default function Companies() {
           .catch(() => this.props.history.push("/"))
     }
 
+    // Fetch users count based on role filter
     const getUserFilterByRole = async () => {
         const url1 = `users/filter_by_roles_count`;
         await fetch(url1, { method: 'GET'})
@@ -85,9 +86,9 @@ export default function Companies() {
           .catch(() => this.props.history.push("/"))
     }
 
-    const fetchCompanies = async (role, order) => {
+    const fetchCompanies = async (role, sortOrder) => {
         setRole(role)
-        await getCompanies(role, order)
+        await getCompanies(role, sortOrder)
     }
 
     useEffect(async () => {
@@ -95,8 +96,8 @@ export default function Companies() {
     }, [])
 
     useEffect(async () => {
-        await getCompanies(role, order)
-    }, [order])
+        await getCompanies(role, sortOrder)
+    }, [sortOrder])
 
     return (
         <>
@@ -107,7 +108,13 @@ export default function Companies() {
                 icon={<PeopleOutlineTwoToneIcon fontSize="large" />}
             />
                 <Paper className={classes.pageContent}>
-                    <CountGrid order={order} role={setRole} className={classes.countGrid} data={data} onClick={fetchCompanies}/>
+                    <FilterGrid 
+                        sortOrder={sortOrder}
+                        role={setRole} 
+                        className={classes.countGrid} 
+                        data={data} 
+                        onClick={fetchCompanies}
+                    />
                     <TblContainer>
                         <TblHead />
                         <TableBody>
