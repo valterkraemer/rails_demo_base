@@ -6,7 +6,6 @@ import {
     Card,
     CardContent,
     Typography,
-    Link,
     Button
 } from '@material-ui/core/'
 
@@ -26,9 +25,9 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export default function AltCard(props) {
+export default function FilterGrid(props) {
     const classes = useStyles()
-    const {data, order} = props
+    const {data, sortOrder} = props
     return (
         <div className={classes.root}>
             <Grid
@@ -52,7 +51,7 @@ export default function AltCard(props) {
                                             <div style={{display: 'inline-block', padding: 30}}>
                                             <Typography variant="h5" color="secondary">{elem.data[element]}</Typography>
                                             <Typography className={classes.label}>{element}</Typography>
-                                            <Button variant="contained" color="primary" onClick={() => props.onClick(element, order)}>Filter</Button>
+                                            <Button variant="contained" color="primary" onClick={() => props.onClick(element, sortOrder)}>Filter</Button>
                                             </div>
                                         )
                                     )}
