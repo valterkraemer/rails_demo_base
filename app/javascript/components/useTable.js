@@ -24,7 +24,7 @@ export default function useTable(records, headCells,filterFn, setSortingOrder) {
     const classes = useStyles();
 
     
-    const [order, setOrder] = useState('asc')
+    const [order, setOrder] = useState()
     const [orderBy, setOrderBy] = useState()
 
     const TblContainer = props => (
@@ -52,7 +52,7 @@ export default function useTable(records, headCells,filterFn, setSortingOrder) {
                             {headCell.disableSorting ? headCell.label :
                                 <TableSortLabel
                                     active={orderBy === headCell.id}
-                                    direction={orderBy === headCell.id ? order : 'asc'}
+                                    direction={orderBy === headCell.id ? order : 'desc'}
                                     onClick={() => { handleSortRequest(headCell.id) }}>
                                     {headCell.label}
                                 </TableSortLabel>

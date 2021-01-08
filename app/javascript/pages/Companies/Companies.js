@@ -33,7 +33,7 @@ export default function Companies() {
     const [role, setRole] = useState('')
     const [countUserFilters, setCountUserFilters] = useState({})
     const [countCompanyFilters, setCountCompanyFilters] = useState({})
-    const [order, setSortingOrder] = useState('asc')
+    const [order, setSortingOrder] = useState('desc')
     const [filterFn, setFilterFn] = useState({ fn: items => { return items } })
     const data = [{label: 'Companies', data: countCompanyFilters}, {label: 'Users', data: countUserFilters}]
     
@@ -45,7 +45,7 @@ export default function Companies() {
     
 
     //Fetch companies based on company role and user role with user's count
-    const getCompanies = async (role = '', order = 'asc') => {
+    const getCompanies = async (role = '', order = 'desc') => {
         const url = `/companies?role=${role}&order=${order}`;
         await fetch(url, { method: 'GET'})
           .then(response => {
