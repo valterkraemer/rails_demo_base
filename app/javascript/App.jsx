@@ -38,31 +38,6 @@ const theme = createMuiTheme({
               backgroundColor: "#333996"
           }
       },
-      containedPrimary: {
-        backgroundColor:"#333996 !important",
-        color: "#fff",
-
-        "&:hover": {
-          opacity: "70%",
-          backgroundColor: "#333996 !important",
-          color: "#fff"
-        },
-        "&:disabled":{
-            backgroundColor:"#333996 !important",
-            color:"#fff",
-            opacity: "50%"
-
-        }
-      },
-      containedSecondary: {
-        backgroundColor:"#848a97",
-        color: "#fff !important",
-        "&:hover": {
-          opacity: "70%",
-          backgroundColor: "#848a97",
-          color: "#fff"
-        }
-      },
   },
   },
   props:{

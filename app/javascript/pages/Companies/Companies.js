@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PageHeader from "../../components/PageHeader";
-import FilterGrid from "./FilterGrid";
-import PeopleOutlineTwoToneIcon from '@material-ui/icons/PeopleOutlineTwoTone';
+import FilterCompany from "./FilterCompany";
+import BusinessIcon from '@material-ui/icons/Business';
 import { Paper, makeStyles, TableBody, TableRow, TableCell, Toolbar, InputAdornment } from '@material-ui/core';
 import useTable from "../../components/useTable";
 import moment from 'moment'
@@ -105,7 +105,7 @@ export default function Companies() {
             <PageHeader
                 title="Companies"
                 subTitle="List of companies"
-                icon={<PeopleOutlineTwoToneIcon fontSize="large" />}
+                icon={<BusinessIcon fontSize="large" />}
             />
                 <Paper className={classes.pageContent}>
                     <FilterGrid 

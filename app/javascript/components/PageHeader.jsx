@@ -3,7 +3,7 @@ import { Paper, Card, Typography, makeStyles, Button } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
     root: {
-        backgroundColor: '#fdfdff'
+        backgroundColor: theme.palette.primary.light,
     },
     pageHeader:{
         padding:theme.spacing(4),
