@@ -22,6 +22,9 @@ const useStyles = makeStyles(theme => ({
     card: {
         backgroundColor: theme.palette.background.default,
         textAlign: 'center'
+    },
+    role: {
+        width: '100%'
     }
 }))
 
@@ -45,7 +48,7 @@ export default function FilterGrid(props) {
                                 verticalAlign: 'middle'}}>
                                 <Typography variant="h5" color="primary">{elem.label}</Typography>
                                 
-                                <div>
+                                <div className={classes.role}>
                                     {Object.keys(elem.data).map(
                                         element=>(
                                             <div style={{display: 'inline-block', padding: 30}}>
