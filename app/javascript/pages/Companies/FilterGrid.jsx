@@ -21,10 +21,13 @@ const useStyles = makeStyles(theme => ({
     },
     card: {
         backgroundColor: theme.palette.background.default,
-        textAlign: 'center'
     },
     role: {
-        width: '100%'
+        paddingTop: '15px',
+        display: 'grid', 
+        gridTemplateColumns: '100px 100px 100px 0px', 
+        gridTemplateRows: '35px 80px',
+        justifyContent: 'center'
     }
 }))
 
@@ -44,14 +47,13 @@ export default function FilterGrid(props) {
                     <Grid  item xs={6} key={data.indexOf(elem)}>
                         <Card className={classes.card}>
 
-                            <CardContent style={{
-                                verticalAlign: 'middle'}}>
+                            <CardContent>
                                 <Typography variant="h5" color="primary">{elem.label}</Typography>
                                 
                                 <div className={classes.role}>
                                     {Object.keys(elem.data).map(
                                         element=>(
-                                            <div style={{display: 'inline-block', padding: 30}}>
+                                            <div style={{ textAlign: 'center' }}>
                                             <Typography variant="h5" color="secondary">{elem.data[element]}</Typography>
                                             <Typography className={classes.label}>{element}</Typography>
                                             <Button variant="contained" color="primary" onClick={() => props.onClick(element, sortOrder)}>Filter</Button>
