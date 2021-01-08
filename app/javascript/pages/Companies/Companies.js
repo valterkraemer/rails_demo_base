@@ -108,7 +108,7 @@ export default function Companies() {
                 icon={<BusinessIcon fontSize="large" />}
             />
                 <Paper className={classes.pageContent}>
-                    <FilterGrid 
+                    <FilterCompany 
                         sortOrder={sortOrder}
                         role={setRole} 
                         className={classes.countGrid} 
