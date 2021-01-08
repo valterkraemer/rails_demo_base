@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.filter_by_role(params[:role], params[:order])
+    @companies = Company.filter_by_role(params[:role], params[:sort])
     render json: { 
       message: "Companies fetched successfully",
       companies: @companies
@@ -69,7 +69,7 @@ class CompaniesController < ApplicationController
   def fetch_companies_count_by_roles
     @companies_count_by_roles = Company.count_companies_by_roles
     render json: { 
-      message: "User Count fetched successfully",
+      message: "Companies roles fetched successfully",
       companies_count_by_roles: @companies_count_by_roles
     }, status: 200
   end

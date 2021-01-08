@@ -65,7 +65,7 @@ class UsersController < ApplicationController
   def fetch_users_count_by_roles
     @user_count_by_roles = User.filter_roles_count
     render json: { 
-      message: "User Count fetched successfully",
+      message: "User roles fetched successfully",
       user_count_by_roles: @user_count_by_roles
     }, status: 200
   end
